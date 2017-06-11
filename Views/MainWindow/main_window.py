@@ -2,6 +2,7 @@ import sys
 from PyQt5 import QtGui, QtCore, QtWidgets
 from time import strftime
 import datetime
+from Views.SettingsWindow.SettingsWindow import SettingsMenu
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -14,30 +15,35 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
 class Timer(QtWidgets.QWidget):
+    timeDisplayFormat = True
+
     def __init__(self, parent):
         super(Timer, self).__init__(parent)
+
         self.setupUI()
         self.show()
 
     def setupUI(self):
         layout = QtWidgets.QVBoxLayout(self)
+        layout.setSpacing(5)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setObjectName("verticalLayout")
         timer = QtCore.QTimer(self)
 
-        timer.timeout.connect(self.Time)
+        timer.timeout.connect(self.time)
         timer.start(10)
 
         # Create Main Window
         main_window = QtWidgets.QListWidget()
 
         # Create settings Icon label
+
         self.settingsIcon = QtWidgets.QLabel(self)
         self.settingsIcon.setObjectName("settingsIcon")
         image = QtGui.QPixmap()
         image.load('icons/settings.png')
         self.settingsIcon.setPixmap(image)
-
+        self.settingsIcon.mousePressEvent = self.open_settings_menu
         # Create time label
         self.timeLabel = QtWidgets.QLabel(self)
         self.timeLabel.setObjectName('timeLabel')
@@ -63,5 +69,13 @@ class Timer(QtWidgets.QWidget):
 
         # layout.addWidget(main_window)
 
-    def Time(self):
-        self.timeLabel.setText(strftime("%H" + " : " + "%M"))
+    def time(self):
+
+        if self.timeDisplayFormat == True:
+            self.timeLabel.setText(strftime("%H" + " : " + "%M"))
+
+        else:
+            self.timeLabel.setText(strftime("%H" + " : " + "%M" + " : " + "%S"))
+
+    def open_settings_menu(self, event):
+        SettingsMenu(self)

@@ -1,7 +1,7 @@
 import os
 import sys
 from PyQt5 import QtWidgets, QtCore, QtGui
-from main_window import MainWindow
+from Views.MainWindow.main_window import MainWindow
 
 
 def run():
