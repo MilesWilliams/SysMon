@@ -1,0 +1,38 @@
+MainWindow {
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    border: 0;
+    width: 300px;
+}
+
+#settingsIcon {
+    qproperty-alignment: Right;
+    margin: 0;
+    padding: 0;
+}
+#timeLabel {
+    font-size: 40px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    qproperty-alignment: AlignCenter;
+}
+
+#line {
+    width: 100px;
+    margin: 0;
+    padding: 0;
+    height: 0px;
+    opacity: 0;
+}
+
+#dateLabel {
+
+    font-size: 29px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    qproperty-alignment: AlignCenter;
+}
+
