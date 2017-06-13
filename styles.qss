@@ -43,3 +43,7 @@ MainWindow {
     qproperty-alignment: AlignCenter;
 }
 
+QLabel {
+    color: #fff;
+}
+

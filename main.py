@@ -1,7 +1,7 @@
 import os
 import sys
 from PyQt5 import QtWidgets, QtCore, QtGui
-from Views.MainWindow.main_window import MainWindow
+from Views.MainWindow.main_window import Ui_MainWindow
 
 
 def run():
@@ -11,7 +11,7 @@ def run():
     # app.setWindowIcon(QtGui.QIcon(path))
 
     app.setStyleSheet(qss_file)
-    main_window = MainWindow()
+    main_window = Ui_MainWindow()
     main_window.setWindowFlags(QtCore.Qt.CustomizeWindowHint)
     main_window.setAttribute(QtCore.Qt.WA_TranslucentBackground)
     main_window.setWindowOpacity(0.90)

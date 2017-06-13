@@ -1,5 +1,4 @@
-import sys
-from PyQt5 import QtGui, QtCore, QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from Views.MainWindow import main_window
 
 
@@ -11,6 +10,8 @@ class SettingsMenu(QtWidgets.QDialog):
         self.setObjectName("SettingsWindow")
         self.setWindowOpacity(0.90)
         self.setGeometry(150, 100, 250, 100)
+        # self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        # self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.menu()
         self.show()
 
@@ -18,14 +19,17 @@ class SettingsMenu(QtWidgets.QDialog):
         formatTimeRow = QtWidgets.QListWidgetItem()
         shortFormatRadioButton = QtWidgets.QRadioButton(self)
         longFormatRadioButton = QtWidgets.QRadioButton(self)
-        shortFormatRadioButton.setChecked(True)
+        if main_window.Timer.timeDisplayFormat is True:
+            shortFormatRadioButton.setChecked(True)
+        else:
+            longFormatRadioButton.setChecked(True)
         shortFormatRadioButton.toggled.connect(lambda: self.check_format(shortFormatRadioButton))
         longFormatRadioButton.toggled.connect(lambda: self.check_format(longFormatRadioButton))
         shortFormatRadioButton.setText("Default time format")
         longFormatRadioButton.setText("Show seconds")
         # shortFormatRadioButton.setGeometry(QtCore.QRect(20, 20, 20, 20))
         # longFormatRadioButton.setGeometry(QtCore.QRect(80, 20, 20, 20))
-        mainItem = QtWidgets.QListWidgetItem('test')
+
         settingsLayout = QtWidgets.QVBoxLayout(self)
         settingsLayout.setObjectName('settingsLayout')
         settingsLayout.setContentsMargins(0, 0, 0, 0)
