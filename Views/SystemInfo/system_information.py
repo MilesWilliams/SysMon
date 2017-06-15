@@ -2,6 +2,7 @@ import os
 import psutil
 from PyQt5 import QtGui, QtCore, QtWidgets
 from Models.SystemStats.system_stats import cpu_usage, ram_usage, available_memory, free_swap, total_hdd, free_hdd, get_open_apps, bytes2human
+import matplotlib.pyplot as plt
 
 
 class SystemInformation(QtWidgets.QWidget):

@@ -59,10 +59,13 @@ class StupidClock(QtWidgets.QWidget):
     def time(self):
 
         if self.timeDisplayFormat == True:
+            self.timeLabel.hide()
             self.timeLabel.setText(strftime("%H" + " : " + "%M"))
-
+            self.timeLabel.show()
         else:
+            self.timeLabel.hide()
             self.timeLabel.setText(strftime("%H" + " : " + "%M" + " : " + "%S"))
+            self.timeLabel.show()
 
     def open_settings_menu(self, event):
         SettingsMenu(self)

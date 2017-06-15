@@ -2,10 +2,16 @@ import psutil
 import math
 from .processes_model import Process
 
+"""
+    Error occurs :   File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/psutil/_common.py", line 316, in wrapper
+                    ret = cache[fun]
+                    KeyError: <function Process._get_pidtaskinfo at 0x104a749d8>
+
+    ToDo : Make into class
+"""
+
 
 def bytes2human(n):
-    # Credits to /u/cyberspacecowboy on reddit
-    # https://www.reddit.com/r/Python/comments/5xukpd/-/dem5k12/
     symbols = (' B', ' KiB', ' MiB', ' GiB', ' TiB', ' PiB', ' EiB', ' ZiB',
                ' YiB')
     i = math.floor(math.log(abs(n) + 1, 2) / 10)
@@ -68,13 +74,9 @@ def get_open_apps():
             pass
         else:
             if pinfo['memory_percent'] is not None:
-                processList.append(Process(pinfo['pid'], pinfo['name'], pinfo['memory_percent'], pinfo['status']))
+                if pinfo['name'] is not 'cache[fun]':
+                    processList.append(Process(pinfo['pid'], pinfo['name'], pinfo['memory_percent'], pinfo['status']))
 
     processList.sort(key=lambda x: x.memory_percent, reverse=True)
 
     return processList
-    # for singleProcess in processList:
-    #     if singleProcess.memory_percent == None :
-    #         processList.remove(singleProcess)
-
-    #     if singleProcess.name == singleProcess.name:

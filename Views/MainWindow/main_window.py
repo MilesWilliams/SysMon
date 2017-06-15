@@ -3,7 +3,10 @@ from PyQt5 import QtGui, QtCore, QtWidgets
 from time import strftime
 import datetime
 from Views.SettingsWindow.SettingsWindow import SettingsMenu
+from Views.SystemInfo.batter import Batteryformation
 from Views.SystemInfo.system_information import SystemInformation
+from Views.NetworkWidget.network import NetworkInormation
+from Views.Devices.device_widget import DeviceWidget
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
@@ -11,11 +14,14 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(Ui_MainWindow, self).__init__(parent)
         self.setWindowTitle("SysMon")
-        self.setGeometry(50, 50, 0, 0)
+        self.setGeometry(20, 20, 0, 0)
         _widget = QtWidgets.QWidget()
         _layout = QtWidgets.QVBoxLayout(_widget)
         _layout.addWidget(Timer(self))
+        _layout.addWidget(Batteryformation(self))
         _layout.addWidget(SystemInformation(self))
+        _layout.addWidget(NetworkInormation(self))
+        _layout.addWidget(DeviceWidget(self))
         self.setCentralWidget(_widget)
         # self.central_widget.spacing(10)
 
@@ -65,15 +71,15 @@ class Timer(QtWidgets.QWidget):
 
         # Add all created widgets
         layout.addWidget(self.settingsIcon)
-        layout.addWidget(self.timeLabel)
+        layout.addWidget(self.timeLabel, 0)
         layout.addWidget(self.line)
-        # layout.addStretch(1)
-        layout.addWidget(self.dateLabel)
 
+        layout.addWidget(self.dateLabel, 0)
+        # layout.addStretch(0)
         # layout.addWidget(main_window)
 
     def time(self):
-
+        self.dateLabel.setText(datetime.datetime.now().strftime('%d %B, %Y'))
         if self.timeDisplayFormat == True:
             self.timeLabel.setText(strftime("%H" + " : " + "%M"))
 
