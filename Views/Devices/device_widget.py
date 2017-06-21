@@ -48,9 +48,9 @@ class DeviceWidget(QtWidgets.QWidget):
     def get_usb_devices(self):
         usbDevices = USBController()
         listUsb = USBController().get_all_devices()
-        print(len(listUsb))
+        # print(len(listUsb))
         if len(listUsb) != 0:
-            print(len(listUsb))
+            # print(len(listUsb))
             self.show()
             if len(listUsb) == 1:
 
@@ -64,7 +64,7 @@ class DeviceWidget(QtWidgets.QWidget):
                         self.usbDevice1.setText('')
                         self.usbDevice1.hide()
         elif len(listUsb) == 0:
-            print('empty')
+            # print('empty')
             self.usb1 = False
             self.usbDevice1.setText('')
             self.usbDevice1.hide()

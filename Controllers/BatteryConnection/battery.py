@@ -30,7 +30,7 @@ class InternalBattery(object):
             battery_stats = 0
 
         if (battery_stats != 0):
-            return battery_stats["Current Capacity"]
+            return str(battery_stats["Current Capacity"]) + "%"
 
     def is_charging(self):
         charging = False
@@ -41,13 +41,28 @@ class InternalBattery(object):
 
         if (battery_stats != 0):
             if battery_stats["Is Charging"] == 1:
-                charging = True
+                charging = "Charging"
                 return charging
-            elif battery_stats["Is Charging"] == 0:
-                charging = False
+            elif battery_stats["Is Charging"] == 0 and battery_stats["Current Capacity"] < 100:
+                charging = "Not Charging"
                 return charging
 
-            return charging
+            elif battery_stats["Current Capacity"] == 100:
+                charging = "Fully Charged"
+                # try:
+                #     if battery_stats["Is Charged"] is not False:
+                #         charging = "Fully Charged"
+
+                #     elif battery_stats["Is Charged"] is False:
+                #         charging = "Fully Charged"
+                #     return charging
+                # except Exception as e:
+                #     charging = "Not Charging"
+                #     print(e)
+
+                return charging
+
+        return charging
 
     def time_to_empty():
         try:

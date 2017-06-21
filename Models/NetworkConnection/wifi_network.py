@@ -1,24 +1,16 @@
 from PyQt5 import QtGui, QtCore, QtWidgets
 
 
-class Process(object):
-    def __init__(self, pid, name, memory_percent, status):
-        self.pid = pid
-        self.name = name
-        self.memory_percent = memory_percent
-        self.status = status
-
-
-class ProcessModel(QtCore.QAbstractTableModel):
-    def __init__(self, processInformation=[[]], parent=None):
+class WifiConnectionsModel(QtCore.QAbstractTableModel):
+    def __init__(self, wifiInformation=[[]], parent=None):
         QtCore.QAbstractTableModel.__init__(self, parent)
-        self._processInformation = processInformation
+        self._wifiInformation = wifiInformation
 
     def columnCount(self, parent):
-        return len(self._processInformation[0])
+        return len(self._wifiInformation[0])
 
     def rowCount(self, parent):
-        return len(self._processInformation)
+        return len(self._wifiInformation)
 
     def flags(self, parent):
         return QtCore.Qt.ItemIsDragEnabled | QtCore.Qt.ItemIsUserCheckable | QtCore.Qt.ItemIsEnabled
@@ -35,5 +27,5 @@ class ProcessModel(QtCore.QAbstractTableModel):
         if role == QtCore.Qt.DisplayRole:
             row = index.row()
             col = index.column()
-            value = self._processInformation[row][col]
+            value = self._wifiInformation[row][col]
             return value

@@ -1,5 +1,5 @@
 import objc
-from .wifi_model import WifiModel
+# from .wifi_model import WifiModel
 
 objc.loadBundle('CoreWLAN',
                 bundle_path='/System/Library/Frameworks/CoreWLAN.framework',
@@ -16,8 +16,8 @@ class WiFi(object):
 
     def get_wifistatus(self):
         if self.interface.powerOn() == 1:
-            return "WiFi On"
-        return "WiFi Off"
+            return "On"
+        return "Off"
 
     def get_ssid(self):
         return self.interface.ssid()
@@ -46,21 +46,21 @@ class WiFi(object):
     def get_mcsindex(self):
         return self.interface.mcsIndex()
 
-    # def get_wifi_list():
-    #     client = CWWiFiClient.sharedWiFiClient()
-    #     en0 = client.interface()
-    #     listWifi = []
-    #     listWifi.clear()
-    #     iface = CWInterface.interface()
-    #     networks, error = en0.scanForNetworksWithName_error_(None, None)
-    #     for single_network in networks:
-    #         if single_network:
-    #             listWifi.append(WifiModel(single_network.ssid()))
-    #             print(single_network)
-    #     for lis in listWifi:
-    #         print(lis.ssid)
-    #         print(CWInterface.interfaceWithName_('en0'))
-        # network = networks.anyObject()
+    def get_wifi_list():
+        client = CWWiFiClient.sharedWiFiClient()
+        en0 = client.interface()
+        listWifi = []
+        listWifi.clear()
+        iface = CWInterface.interface()
+        networks, error = en0.scanForNetworksWithName_error_(None, None)
+        for single_network in networks:
+            if single_network:
+                listWifi.append(WifiModel(single_network.ssid()))
+                print(single_network)
+        for lis in listWifi:
+            print(lis.ssid)
+            print(CWInterface.interfaceWithName_('en0'))
+        network = networks.anyObject()
 
 # def get_wifistatus():
 #     interface = CWInterface.interfaceWithName_('en0')

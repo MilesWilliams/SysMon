@@ -19,11 +19,11 @@ def bytes2human(n):
 
 
 def cpu_usage():
-    return psutil.cpu_percent()
+    return str(psutil.cpu_percent()) + '%'
 
 
 def ram_usage():
-    return psutil.virtual_memory().percent
+    return str(psutil.virtual_memory().percent) + '%'
 
 
 def available_memory():

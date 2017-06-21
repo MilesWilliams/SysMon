@@ -1,15 +1,6 @@
-MainWindow {
-/*    margin: 0;
-    padding: 0;
-    opacity: 0;
-    border: 0;
-    width: 300px;
-    border-radius: 6px;*/
-}
-
 #SettingsWindow {
     border-radius: 6px;
-    background: rgba(0,48,88,0.85);
+    background: rgba(000,000,0.65);
 
 }
 
@@ -19,31 +10,85 @@ MainWindow {
     padding: 0;
 }
 #timeLabel {
-    font-size: 40px;
-    color: #fff;
+    font-size: 16px;
+    font-family: "Helvetica Neue";
+    font-weight: 100;
+    color: #90B8E0;
     margin: 0;
     padding: 0;
-    qproperty-alignment: AlignCenter;
-}
-
-#line {
-    width: 100px;
-    margin: 0;
-    padding: 0;
-    height: 0px;
-    opacity: 0;
+    qproperty-alignment: AlignRight;
 }
 
 #dateLabel {
-
-    font-size: 19px;
-    color: #fff;
+    font-size: 16px;
+    font-family: "Helvetica Neue";
+    font-weight: 100;
+    color: #90B8E0;
     margin: 0;
     padding: 0;
-    qproperty-alignment: AlignCenter;
+    qproperty-alignment: AlignLeft;
 }
 
-QLabel {
+#networkListView {
     color: #fff;
+    font-weight: 100;
+    font-size: 12px;
 }
 
+#tableView:item {
+    color: #90B8E0;
+}
+
+
+
+#batterHeader, #networkHeading, #systemHeading, #processHeading {
+    color: #fff;
+    border: 0px solid black;
+    font-size: 16px;
+    font-weight: 100;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 6px;
+}
+
+#currentTemp {
+    font-size: 46px;
+    color: #fff;
+    font-family: "Helvetica Neue";
+}
+
+#currentTempStatsListView:item {
+    color: #fff;
+    font-family: "Helvetica";
+    font-size: 12px;
+    font-weight: 100;
+    qproperty-alignment: AlignRight;
+}
+
+#systemHeading {
+    height: 20px;
+    margin-top: 7px;
+}
+
+#systemTable, #processTable, #batterTable {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+#forecastTable:item{
+    color: #fff;
+    font-size: 12px;
+    font-weight: 100;
+    qproperty-alignment: AlignCenter;
+
+}
+#forecastTable{
+    margin-bottom: 14px;
+}
+
+#batterTable:item{
+    color: #fff;
+    font-size: 12px;
+    font-weight: 100;
+    height: 12px;
+}
